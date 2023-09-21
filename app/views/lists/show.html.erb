@@ -1,5 +1,10 @@
-<div><%= @list.name %></div>
-<div><%= link_to "edit list name", edit_list_path(@list) %></div>
+<div class="header-container">
+  <div class="mt-4">
+    <h1><%= @list.name %></h1>
+  </div>
+  <div><%= link_to "edit list name", edit_list_path(@list) %></div>
+  <div><%= link_to "delete the list", root_path %></div>
+</div>
 <%= simple_form_for [@list, @bookmark] do |f| %>
 <%= f.association :movie  %>
 <%= f.input :comment %>
@@ -7,11 +12,40 @@
 <% end %>
 <div>
   <% @movies.each do |movie| %>
-  <div>
-    <%= movie.title %>
-    <%= image_tag movie.poster_url %>
-    <%= movie.rating %>
-    <%= movie.overview %>
+  <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
+  <div class="mt-4">
+    <%= movie.title%>
   </div>
+  <div>
+    <div>
+      <%= image_tag movie.poster_url, width: 200 %>
+    </div>
+    <div class="mb-4">
+      <%= movie.overview%>
+    </div>
+    <div>
+      Rating <%= movie.rating %>
+    </div>
+  </div>
+  <div>
+    <%= bookmark.comment %>
+  </div>
+    <%= link_to "delete",  bookmark_path(bookmark), data: {turbo_method: :delete}, class:"btn btn-danger" %>
   <% end %>
+
+  <div class="footer-container">
+  <div>
+    <% Review.all.each do |review| %>
+    <div>
+      <%= review.content %>
+    </div>
+    <% end %>
+  </div>
+    <div>
+      <%= simple_form_for [@list, @review] do |f| %>
+      <%= f.input :content %>
+      <%= f.button :submit, class: "btn btn-success"  %>
+      <% end %>
+    </div>
+  </div>
 </div>

@@ -1,4 +1,5 @@
 class ListsController < ApplicationController
+  before_action :set_params, only: %i[show edit update and destroy]
   def index
     @lists = List.all
   end
@@ -17,23 +18,31 @@ class ListsController < ApplicationController
   end
 
   def show
-    @list = List.find(params[:id])
     @movies = @list.movies
     @bookmark = Bookmark.new
+    @review = Review.new
   end
 
   def edit
-    @list = List.find(params[:id])
+
   end
 
   def update
-    @list = List.find(params[:id])
     @list.update(list_param)
     redirect_to list_path(@list)
   end
 
+  def destroy
+    @list = List.find(params[:id])
+    @list.destroy
+    redirect_to root_path
+  end
 
   private
+
+  def set_params
+    @list = List.find(params[:id])
+  end
 
   def list_param
     params.require(:list).permit(:name)
