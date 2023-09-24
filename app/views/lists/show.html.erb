@@ -3,7 +3,7 @@
     <h1><%= @list.name %></h1>
   </div>
   <div><%= link_to "edit list name", edit_list_path(@list) %></div>
-  <div><%= link_to "delete the list", root_path %></div>
+  <div><%= link_to "delete the list", list_path(@list), data: { turbo_method: :delete} %></div>
 </div>
 <%= simple_form_for [@list, @bookmark] do |f| %>
 <%= f.association :movie  %>

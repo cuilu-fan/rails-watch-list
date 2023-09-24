@@ -1,28 +1,22 @@
-<div class="container home mt-4 mb-4">
-<nav>
-  <div class="navbar-lewagon">🍿
-    <%= link_to "my lists", lists_path %>
-    <%= link_to "new lists", new_list_path %>
+<div>
+  <div class="top--banner" id="top-image">
+    <h2>"The secret to film is that it's an illusion."--George Lucas</h2>
   </div>
-  <div class="navbar-brand">
-    <%= image_tag "homepage.jpg", alt: "cinema", height: 200 %>
-  </div>
-</nav>
-<div class="container my-lists">
-  <div class="d-flex justify-content-around mt-4">
-    <div>
-    <h1>my lists</h1>
+<div>
+  <div class="container my-lists">
+    <div class="d-flex justify-content-around mt-4">
+      <div>
+        <h1>my lists</h1>
+      </div>
+      <div>
+        <%= link_to "create a movie list", new_list_path, class:"btn btn-success" %>
+      </div>
     </div>
-    <div>
-    <%= link_to "create a movie list", new_list_path, class:"btn btn-success" %>
-    </div>
-  </div>
   <div class="list-cards mt-4 mb-4">
     <% @lists.each do |list| %>
-    <div class="list-container">
-      <%= link_to list.name, list_path(list) %>
-    </div>
+      <div class="list-container">
+        <%= link_to list.name, list_path(list)%>
+      </div>
     <% end %>
   </div>
-</div>
 </div>
