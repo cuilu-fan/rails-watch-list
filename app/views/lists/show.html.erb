@@ -1,39 +1,48 @@
-<div class="header-container">
-  <div class="mt-4">
-    <h1><%= @list.name %></h1>
-  </div>
-  <div><%= link_to "edit list name", edit_list_path(@list) %></div>
-  <div><%= link_to "delete the list", list_path(@list), data: { turbo_method: :delete} %></div>
-</div>
-<%= simple_form_for [@list, @bookmark] do |f| %>
-<%= f.association :movie  %>
-<%= f.input :comment %>
-<%= f.button :submit, class: "btn btn-primary"  %>
-<% end %>
 <div>
+  <div>
+    <button><%= link_to "edit list name", edit_list_path(@list) %></button>
+    <button><%= link_to "delete the list", list_path(@list), data: { turbo_method: :delete} %></button>
+  </div>
+</div>
+<div class="top--banner flex-text--vh--c">
+  <div class="">
+    <h2><%= @list.name %></h2>
+  </div>
+</div>
+<div class="container mt-4 mb-4">
+  <%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.association :movie  %>
+  <%= f.input :comment %>
+  <%= f.button :submit, class: "btn btn-success"  %>
+  <% end %>
+</div>
+<div class="container mt-4 mb-4">
   <% @movies.each do |movie| %>
   <% bookmark = Bookmark.find_by(list: @list, movie: movie) %>
-  <div class="mt-4">
-    <%= movie.title%>
-  </div>
-  <div>
-    <div>
+
+    <div class="mb-2">
+      <% movie.title%>
+    </div>
+
+    <div class="mb-2">
       <%= image_tag movie.poster_url, width: 200 %>
     </div>
-    <div class="mb-4">
-      <%= movie.overview%>
+    <div class="mb-2">
+      Overview: <%= movie.overview%>
     </div>
-    <div>
-      Rating <%= movie.rating %>
+    <div class="mb-2">
+      Rating: <%= movie.rating %>
     </div>
+
+  <div class="mb-2">
+    Comment: <%= bookmark.comment %>
   </div>
-  <div>
-    <%= bookmark.comment %>
+  <div class="mb-2">
+  <%= link_to "delete",  bookmark_path(bookmark), data: {turbo_method: :delete}, class:"btn btn-danger" %>
   </div>
-    <%= link_to "delete",  bookmark_path(bookmark), data: {turbo_method: :delete}, class:"btn btn-danger" %>
   <% end %>
 
-  <div class="footer-container">
+  <div class="footer-container mt-4">
   <div>
     <% Review.all.each do |review| %>
     <div>
