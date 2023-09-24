@@ -1,6 +1,6 @@
 require "open-uri"
 
-# url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=87f6a08331d5e9ce459d73e4278e89e8'
+url = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1&api_key=87f6a08331d5e9ce459d73e4278e89e8'
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
 #
@@ -15,12 +15,14 @@ require "open-uri"
 
 movie_db = URI.open(url).read
 movies = JSON.parse(movie_db)['results']
-
+base_poster_url = "https://image.tmdb.org/t/p/original"
 movies.each do |movie|
+  url = movie['poster_path']
   Movie.create(
     title: movie['original_title'],
     overview: movie['overview'],
-    poster_url: movie['poster_path'],
-    rating: movie['vote_averag']
+    poster_url: base_poster_url.to_s + url.to_s,
+    rating: movie['vote_average']
   )
 end
+

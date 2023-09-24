@@ -1,0 +1,17 @@
+.card{
+  border-radius: 5px;
+  width: 300px;
+  height: 200px;
+  background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
+    asset-url("card_picture2.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.movie--card{
+  border: 1px solid red;
+  border-radius: 5px;
+  width: 400px;
+  height: 400px;
+}

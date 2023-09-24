@@ -1,0 +1,16 @@
+.top--banner{
+  height: 300px;
+  display: flex;
+  
+  h2{
+    color: beige;
+    font: bold;
+  }
+}
+
+#top-image{
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+    asset-url("homepage.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}

@@ -1,13 +1,9 @@
 // Specific CSS for your home-page
-
-.list-cards{
+.button--create{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 40px;
+  justify-items: center;
 }
 
-.list-container{
-  padding: 20px;
-  background-color: rgb(242, 215, 238);
-  text-align: center;
+.container--homepage{
+  background-color: #E3C7CB;
 }
