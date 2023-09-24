@@ -1,8 +1,7 @@
 .top--banner{
   height: 300px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  
   h2{
     color: beige;
     font: bold;
@@ -15,12 +14,3 @@
   background-size: cover;
   background-repeat: no-repeat;
 }
-
-// .navbar-lists{
-//   grid-template-columns: 1fr 1 fr 1fr 1fr;
-//   grid
-// }
-
-// .navbar-lewagon .navbar-collapse {
-//   flex-grow: 0;
-// }

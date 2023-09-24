@@ -1,35 +1,5 @@
 // Specific CSS for your home-page
-
-// .list-cards{
-//   display: grid;
-//   grid-template-columns: 1fr 1fr 1fr 1fr;
-//   grid-gap: 40px;
-// }
-
-// .list-container{
-//   padding: 20px;
-//   background-color: rgb(242, 215, 238);
-//   text-align: center;
-// }
-
-.img{
-  background-image: assets-url("homepage.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+.button--create{
+  display: grid;
+  justify-items: center;
 }
-
-// .image-container{
-//   position: relative;
-//   text-align: center;
-//   color: white;
-//   height: 30%;
-// }
-
-// .centered{
-//   position: absolute;
-//   top: 50%;
-//   left: 50%;
-//   transform: translate(-50%, -50%);
-//   margin-top: 300px;
-//   font-weight: 900;
-// }
